@@ -2,3 +2,4 @@ Administrador,Admin Principal,admin@shopplus.com,admin123
 Cliente,Juan Pérez,juan@email.com,cliente123,Calle 123 #45-67
 Proveedor,Tech Solutions,proveedor1@email.com,prov123,Tech Solutions Inc
 Proveedor,Hardware Plus,proveedor2@email.com,prov456,Hardware Plus Ltd
+Cliente,Juan,adfi@23ip1,2018,sdf1234

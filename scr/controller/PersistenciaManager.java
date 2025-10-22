@@ -1,19 +1,21 @@
-package com.shopplus.persistence;
+package scr.controller;
 
-import com.shopplus.model.*;
+import scr.model.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Clase que maneja la persistencia de datos en archivos de texto.
+ * @author Juan Cogua
+ * @version 1.0
  */
 public class PersistenciaManager {
     private static final String PRODUCTOS_FILE = "productos.txt";
     private static final String USUARIOS_FILE = "usuarios.txt";
 
     /**
-     * Guarda la lista de productos en un archivo de texto.
+     * Guarda la lista de productos en archivo.
      * @param productos Lista de productos a guardar
      */
     public void guardarProductos(List<Producto> productos) {
@@ -33,8 +35,8 @@ public class PersistenciaManager {
     }
 
     /**
-     * Carga la lista de productos desde un archivo de texto.
-     * @param proveedores Lista de proveedores para asociar con los productos
+     * Carga productos desde archivo relacionándolos con proveedores.
+     * @param proveedores Lista de proveedores disponibles
      * @return Lista de productos cargados
      */
     public List<Producto> cargarProductos(List<Proveedor> proveedores) {
@@ -50,7 +52,7 @@ public class PersistenciaManager {
                     double precio = Double.parseDouble(parts[3]);
                     int stock = Integer.parseInt(parts[4]);
                     String proveedorEmail = parts[5];
-                    
+
                     Proveedor proveedor = buscarProveedor(proveedores, proveedorEmail);
                     if (proveedor != null) {
                         productos.add(new Producto(id, nombre, descripcion, precio, stock, proveedor));
@@ -64,19 +66,19 @@ public class PersistenciaManager {
     }
 
     /**
-     * Guarda la lista de usuarios en un archivo de texto.
+     * Guarda la lista de usuarios en archivo.
      * @param usuarios Lista de usuarios a guardar
      */
     public void guardarUsuarios(List<Usuario> usuarios) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(USUARIOS_FILE))) {
             for (Usuario usuario : usuarios) {
                 String tipo = usuario.getClass().getSimpleName();
-                writer.print(String.format("%s,%s,%s,%s", 
+                writer.print(String.format("%s,%s,%s,%s",
                     tipo,
                     usuario.getNombre(),
                     usuario.getEmail(),
                     usuario.getContraseña()));
-                
+
                 if (usuario instanceof Cliente) {
                     writer.println("," + ((Cliente) usuario).getDireccionEnvio());
                 } else if (usuario instanceof Proveedor) {
@@ -91,7 +93,7 @@ public class PersistenciaManager {
     }
 
     /**
-     * Carga la lista de usuarios desde un archivo de texto.
+     * Carga usuarios desde archivo.
      * @return Lista de usuarios cargados
      */
     public List<Usuario> cargarUsuarios() {
@@ -105,7 +107,7 @@ public class PersistenciaManager {
                     String nombre = parts[1];
                     String email = parts[2];
                     String contraseña = parts[3];
-                    
+
                     switch (tipo) {
                         case "Cliente":
                             if (parts.length > 4) {
@@ -129,6 +131,12 @@ public class PersistenciaManager {
         return usuarios;
     }
 
+    /**
+     * Busca un proveedor por email en una lista.
+     * @param proveedores Lista de proveedores
+     * @param email Email buscado
+     * @return Proveedor encontrado o null
+     */
     private Proveedor buscarProveedor(List<Proveedor> proveedores, String email) {
         return proveedores.stream()
             .filter(p -> p.getEmail().equals(email))

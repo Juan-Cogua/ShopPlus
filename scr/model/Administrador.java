@@ -1,10 +1,12 @@
-package com.shopplus.model;
+package scr.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Clase que representa a un administrador del sistema.
+ * @author Juan Cogua
+ * @version 1.0
  */
 public class Administrador extends Usuario {
     private List<Producto> productosGestionados;
@@ -59,11 +61,18 @@ public class Administrador extends Usuario {
         return "Administrador: Gestionando productos y usuarios";
     }
 
-    // Getters para las listas
+    /**
+     * Obtiene los productos gestionados.
+     * @return Lista de productos gestionados
+     */
     public List<Producto> getProductosGestionados() {
         return new ArrayList<>(productosGestionados);
     }
 
+    /**
+     * Obtiene los usuarios gestionados.
+     * @return Lista de usuarios gestionados
+     */
     public List<Usuario> getUsuariosGestionados() {
         return new ArrayList<>(usuariosGestionados);
     }

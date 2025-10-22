@@ -1,7 +1,9 @@
-package com.shopplus.model;
+package scr.model;
 
 /**
  * Clase base que representa a un usuario del sistema.
+ * @author Juan Cogua
+ * @version 1.0
  */
 public abstract class Usuario {
     protected String nombre;
@@ -20,27 +22,50 @@ public abstract class Usuario {
         this.contraseña = contraseña;
     }
 
-    // Getters y setters
+    /**
+     * Obtiene el nombre del usuario.
+     * @return Nombre del usuario
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Establece el nombre del usuario.
+     * @param nombre Nuevo nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Obtiene el email del usuario.
+     * @return Email del usuario
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Establece el email del usuario.
+     * @param email Nuevo email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Obtiene la contraseña del usuario.
+     * @return Contraseña del usuario
+     */
     public String getContraseña() {
         return contraseña;
     }
 
+    /**
+     * Establece la contraseña del usuario.
+     * @param contraseña Nueva contraseña
+     */
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }

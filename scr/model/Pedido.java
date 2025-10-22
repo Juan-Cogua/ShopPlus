@@ -1,4 +1,4 @@
-package com.shopplus.model;
+package scr.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Date;
 
 /**
  * Clase que representa un pedido en el sistema.
+ * @author Juan Cogua
+ * @version 1.0
  */
 public class Pedido {
     private int id;
@@ -39,31 +41,58 @@ public class Pedido {
         total += producto.getPrecio() * cantidad;
     }
 
-    // Getters y setters
+    /**
+     * Obtiene el ID del pedido.
+     * @return ID del pedido
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Obtiene el cliente del pedido.
+     * @return Cliente asociado al pedido
+     */
     public Cliente getCliente() {
         return cliente;
     }
 
+    /**
+     * Obtiene la lista de productos del pedido.
+     * @return Lista de productos
+     */
     public List<Producto> getProductos() {
         return new ArrayList<>(productos);
     }
 
+    /**
+     * Obtiene la fecha del pedido.
+     * @return Fecha de creación del pedido
+     */
     public Date getFechaPedido() {
         return fechaPedido;
     }
 
+    /**
+     * Obtiene el estado del pedido.
+     * @return Estado actual del pedido
+     */
     public String getEstado() {
         return estado;
     }
 
+    /**
+     * Establece el estado del pedido.
+     * @param estado Nuevo estado
+     */
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
+    /**
+     * Obtiene el total del pedido.
+     * @return Total acumulado del pedido
+     */
     public double getTotal() {
         return total;
     }
